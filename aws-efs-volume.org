@@ -1,3 +1,5 @@
+*EFS-TO-DOCKER -*- mode: org -*-
+
 * Attaching an AWS EFS to Docker Containers
 ** Prerequisites
 - Practically any Linux operating system
@@ -10,13 +12,12 @@
        ~aws configure~
 
     2. Create an Elastic File System volume using the aws-cli
-
-        ~aws efs create-file-system --creation-token <insert a name here>~
+       ~aws efs create-file-system --creation-token <insert a name here>~
 
     3. Copy the "FileSystemId" from the output of that command
     4. Now run
+       ~docker run -it --name <give it a name> --mount type=volume,source=<file-system-id>,target=/efs,volume-driver=local <whatever docker image you want>~
 
-        ~docker run -it --name <give it a name> --mount type=volume,source=<file-system-id>,target=/efs,volume-driver=local <whatever docker image you want>~
     5. You should now be able to type ~ls~ in the container's root directory and see a folder called ~efs~.
        Hooray! You did it!
 
@@ -25,3 +26,4 @@
 - Then try installing ~nfs-utils~
 - Still doesn't work? try ~pip install --user botocore boto3 amazon-efs~
 - Still nothing? Guess ya better ask ChatGPT :D
+ Attaching an AWS EFS to Docker Containers
