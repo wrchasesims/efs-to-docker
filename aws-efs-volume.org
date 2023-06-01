@@ -1,5 +1,3 @@
-*EFS-TO-DOCKER -*- mode: org -*-
-
 * Attaching an AWS EFS to Docker Containers
 ** Prerequisites
 - Practically any Linux operating system
